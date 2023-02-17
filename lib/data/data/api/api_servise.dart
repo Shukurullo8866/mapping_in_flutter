@@ -1,8 +1,4 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-
 import '../../../utils/constants.dart';
 import '../geocoding/geocoding.dart';
 import '../model/my_respons/response_model.dart';

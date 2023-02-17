@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 import '../../data/data/api/api_servise.dart';
 import '../../data/data/model/lat_long.dart';
-import '../../data/data/repositoriy/geocoding_repo.dart';
+import '../../data/data/repository/ repositories_lat_long/geocoding_repo.dart';
 import '../../view_model/map_view_model.dart';
 
 class MapScreen extends StatefulWidget {
@@ -45,26 +45,26 @@ class _MapScreenState extends State<MapScreen> {
   _init() {
     initialCameraPosition = CameraPosition(
       target: LatLng(
-        widget.latLong.lattitude,
+        widget.latLong.latitude,
         widget.latLong.longitude,
       ),
       zoom: 15,
     );
     cameraPosition = CameraPosition(
       target: LatLng(
-        widget.latLong.lattitude,
+        widget.latLong.latitude,
         widget.latLong.longitude,
       ),
       zoom: 15,
     );
 
-    // SystemChrome.setSystemUIOverlayStyle(
-    //   const SystemUiOverlayStyle(
-    //     statusBarColor: Colors.transparent,
-    //     statusBarBrightness: Brightness.dark,
-    //     statusBarIconBrightness: Brightness.dark,
-    //   ),
-    // );
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
   }
 
   @override
@@ -107,11 +107,11 @@ class _MapScreenState extends State<MapScreen> {
                       onCameraMove: (position) {
                         cameraPosition = position;
                       },
-                      //polylines: ,
+
                       onCameraIdle: () {
                         context.read<MapViewModel>().fetchAddress(
                           latLong: LatLong(
-                            lattitude: cameraPosition.target.latitude,
+                            latitude: cameraPosition.target.latitude,
                             longitude: cameraPosition.target.longitude,
                           ),
                           kind: "house",
@@ -136,6 +136,8 @@ class _MapScreenState extends State<MapScreen> {
                     ),
                     Align(
                       alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 60),
                       child: SizedBox(
                         width: 50,
                         height: 50,
@@ -143,6 +145,7 @@ class _MapScreenState extends State<MapScreen> {
                           "assets/senter_icon.png",
                         ),
                       ),
+                      )
                     ),
                     Positioned(
                       top: 50,

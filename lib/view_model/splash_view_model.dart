@@ -15,7 +15,6 @@ class SplashViewModel extends ChangeNotifier {
   PermissionStatus _permissionGranted = PermissionStatus.denied;
 
   Future<void> fetchCurrentLocation() async {
-//1- qadam location qurilmada enable yoki disable ekanini tekshiradi
     _serviceEnabled = await location.serviceEnabled();
 
     if (!_serviceEnabled) {
@@ -25,7 +24,6 @@ class SplashViewModel extends ChangeNotifier {
       }
     }
 
-//2- qadam lakatsiyaga permission oladi
 
     _permissionGranted = await location.hasPermission();
     if (_permissionGranted == PermissionStatus.denied) {
@@ -35,10 +33,9 @@ class SplashViewModel extends ChangeNotifier {
       }
     }
 
-    // lakatsiyani oladi
     LocationData locationData = await location.getLocation();
     latLong = LatLong(
-      lattitude: locationData.latitude!,
+      latitude: locationData.latitude!,
       longitude: locationData.longitude!,
     );
     await Future.delayed(const Duration(seconds: 3));
