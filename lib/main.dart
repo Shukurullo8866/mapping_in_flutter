@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:mapping_in_flutter/screens/splash_screen/splash_screen.dart';
 import 'package:workmanager/workmanager.dart';
 
 import 'data/data/model/lat_long.dart';
@@ -29,8 +28,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,13 +48,6 @@ class MovementInfoPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Lat Long"),
-        leading: (IconButton(
-          icon: const Icon(Icons.navigate_next),
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (_) => const SplashScreen()));
-          },
-        )),
         actions: [
           IconButton(
             onPressed: () async {
