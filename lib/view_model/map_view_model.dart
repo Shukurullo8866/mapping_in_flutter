@@ -9,7 +9,7 @@ class MapViewModel extends ChangeNotifier {
   final GeocodingRepo geocodingRepo;
 
   String addressText = "chilanzar";
-  String errorForUI = "a";
+  String errorForUI = "err";
 
   fetchAddress({required LatLong latLong, required String kind}) async {
     AppResponse appResponse = await geocodingRepo.getAddress(latLong, kind);
