@@ -69,7 +69,6 @@ class MovementInfoPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(movements[index].long.toString()),
-                    subtitle: Text(movements[index].time.toString()),
                   );
                 });
           }
