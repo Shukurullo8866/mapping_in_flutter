@@ -23,7 +23,7 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   final Completer<GoogleMapController> _controller =
-  Completer<GoogleMapController>();
+      Completer<GoogleMapController>();
 
   late CameraPosition initialCameraPosition;
   late CameraPosition cameraPosition;
@@ -93,7 +93,7 @@ class _MapScreenState extends State<MapScreen> {
                     GoogleMap(
                       markers: mapMarkers,
                       padding: const EdgeInsets.all(16),
-                       myLocationEnabled: true,
+                      myLocationEnabled: true,
                       // liteModeEnabled: true,
                       // zoomControlsEnabled: false,
                       // zoomGesturesEnabled: true,
@@ -102,20 +102,19 @@ class _MapScreenState extends State<MapScreen> {
                         _controller.complete(controller);
                       },
                       initialCameraPosition: initialCameraPosition,
-                      onCameraMoveStarted: () {
-                      },
+                      onCameraMoveStarted: () {},
                       onCameraMove: (position) {
                         cameraPosition = position;
                       },
 
                       onCameraIdle: () {
                         context.read<MapViewModel>().fetchAddress(
-                          latLong: LatLong(
-                            latitude: cameraPosition.target.latitude,
-                            longitude: cameraPosition.target.longitude,
-                          ),
-                          kind: "house",
-                        );
+                              latLong: LatLong(
+                                latitude: cameraPosition.target.latitude,
+                                longitude: cameraPosition.target.longitude,
+                              ),
+                              kind: "house",
+                            );
                       },
                     ),
                     Positioned(
@@ -135,18 +134,17 @@ class _MapScreenState extends State<MapScreen> {
                       ),
                     ),
                     Align(
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 60),
-                      child: SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: Image.asset(
-                          "assets/senter_icon.png",
-                        ),
-                      ),
-                      )
-                    ),
+                        alignment: Alignment.center,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 60),
+                          child: SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: Image.asset(
+                              "assets/senter_icon.png",
+                            ),
+                          ),
+                        )),
                     Positioned(
                       top: 50,
                       left: 20,
@@ -162,15 +160,13 @@ class _MapScreenState extends State<MapScreen> {
               onPressed: () {
                 mapMarkers.add(
                   Marker(
-                      markerId: MarkerId(
-                          cameraPosition.target.latitude.toString()),
-                      infoWindow: InfoWindow(
-                        title: "Manzil",
-                        snippet: context
-                            .read<MapViewModel>()
-                            .addressText,
-                      ),
-                      position: cameraPosition.target,
+                    markerId:
+                        MarkerId(cameraPosition.target.latitude.toString()),
+                    infoWindow: InfoWindow(
+                      title: "Manzil",
+                      snippet: context.read<MapViewModel>().addressText,
+                    ),
+                    position: cameraPosition.target,
                   ),
                 );
                 _addMarker(context.read<MapViewModel>().addressText);

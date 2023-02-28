@@ -3,6 +3,7 @@ import 'package:mapping_in_flutter/screens/map_sceen/map_screen.dart';
 import 'package:mapping_in_flutter/view_model/splash_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:lottie/lottie.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -17,11 +18,11 @@ class _SplashScreenState extends State<SplashScreen> {
       create: (context) => SplashViewModel(),
       builder: (context, child) {
         return Scaffold(
-          backgroundColor:  Colors.white,
+          backgroundColor: Colors.white,
           body: Consumer<SplashViewModel>(
             builder: (context, viewModel, child) {
               WidgetsBinding.instance.addPostFrameCallback(
-                    (timeStamp) {
+                (timeStamp) {
                   if (viewModel.latLong != null) {
                     Navigator.pushReplacement(
                       context,
@@ -34,12 +35,13 @@ class _SplashScreenState extends State<SplashScreen> {
                   }
                 },
               );
-              return  Center(
-                child: Lottie.asset('assets/lotti.htm',
-                  repeat: true,
-                  reverse: true,
-                  animate: true,)
-              );
+              return Center(
+                  child: Lottie.asset(
+                'assets/lotti.htm',
+                repeat: true,
+                reverse: true,
+                animate: true,
+              ));
             },
           ),
         );
